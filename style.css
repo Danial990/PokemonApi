@@ -32,36 +32,6 @@
     box-shadow: 0px 1px 5px rgb(0, 0, 0, 0.1);
 }
 
-
-
-.search-wrapper .recommendation {
-    padding: 10px 8pxpx;
-    max-height: 240px;
-    overflow-y: auto;
-    opacity: 0;
-    pointer-events: none;
-
-}
-
-.search-wrapper input.active.recommendation {
-    padding: 10px 8px;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-
-.search-wrapper.recommendation li {
-    list-style: none;
-    padding: 8px 12px;
-    width: 100%;
-    border-radius: 3px;
-    display: none;
-}
-
-.search-wrapper input.active.recommendation li {
-    display: block;
-}
-
 .search-wrapper .icon {
     height: 55px;
     width: 55px;
@@ -120,7 +90,6 @@
     border: 2px solid;
     width: 30%;
 }
-
 
 .pokemon-cards :nth-child(4) {
     margin-bottom: 5px;

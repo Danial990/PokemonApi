@@ -9,7 +9,7 @@ let wholeData = {};
 
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value;
-    // console.log(pokemons)
+
     if (value) {
         pokemons.forEach(data => {
             const isVisible = data.name.includes(value);
