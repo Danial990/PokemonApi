@@ -4,7 +4,7 @@ const searchInput = document.querySelector("[data-search]")
 const props = [];
 
 let datas;
-let pokemons = [];
+var pokemons = [];
 let wholeData = {};
 
 searchInput.addEventListener("input", (e) => {
@@ -23,7 +23,7 @@ searchInput.addEventListener("input", (e) => {
 })
 
 
-
+//reading pokemons link 1~20
 function test() {
     for (let index = 1; index <= 20; index++) {
         fetch('https://pokeapi.co/api/v2/pokemon/' + `${index}`)
@@ -33,9 +33,8 @@ function test() {
                 const w = infos.weight;
                 const n = infos.name;
                 const a = infos.abilities;
-
                 const t = infos.types[0].type.name;
-
+                const image = '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/' + `${index}` + '.png" />'
                 let t1 = '';
                 if (infos.types[1]) {
                     t1 = ', ' + infos.types[1].type.name;
@@ -60,14 +59,17 @@ function test() {
                 // }
                 // console.log(v);
 
-                props[index - 1] = { h, w, n, a, t, t1, v, v1, v2 };
-
+                props[index - 1] = { h, w, n, a, t, t1, v, v1, v2, image };
             })
     }
+    console.log(props);
     return props;
 }
+
 test();
 
+
+// reading main link
 fetch('https://pokeapi.co/api/v2/pokemon/')
 
     .then(res => res.json())
@@ -90,6 +92,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/')
                     weight.textContent = 'weight: ' + props[c].w;
                     type.textContent = props[c].t + ' ' + props[c].t1;
                     abilities.textContent = 'abilities: ' + props[c].v + ' ' + props[c].v1 + ' ' + props[c].v2
+                    img.innerHTML = props[c].image;
                     datas = {
                         name: header.textContent,
                         hegiht: height.textContent,
@@ -103,7 +106,7 @@ fetch('https://pokeapi.co/api/v2/pokemon/')
                 pokemonDataContainer.append(card)
                 return wholeData = { ...datas, element: card }
             })
-            // console.log(pokemons);
+            // console.log(pokemons)
             return pokemons = wholeData;
         })
     })
