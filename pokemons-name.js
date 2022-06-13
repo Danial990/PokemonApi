@@ -18,4 +18,4 @@ let suggestion = ['bulbasaur',
     'pidgeot',
     'rattata',
     'raticate',
-]
+];
