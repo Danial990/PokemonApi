@@ -14,45 +14,29 @@
 </head>
 
 <body>
+    <!-- search bar -->
     <div class="container">
         <div class="search-wrapper">
             <div class="search-input">
                 <label for="search" data-label>Pokedex</label>
                 <input type="text" id="search" data-search placeholder="search">
-                <div class="autocom-box">
-                    <!-- <li>bulbasaur</li>
-                    <li>ivysaur</li>
-                    <li>venusaur</li>
-                    <li>charmander</li>
-                    <li>charmeleon</li>
-                    <li>charizard</li>
-                    <li>squirtle</li>
-                    <li>wartortle</li>
-                    <li>blastoise</li>
-                    <li>caterpie</li>
-                    <li>metapod</li>
-                    <li>butterfree</li>
-                    <li>weedle</li>
-                    <li>kakuna</li>
-                    <li>beedrill</li>
-                    <li>pidgey</li>
-                    <li>pidgeotto</li>
-                    <li>pidgeot</li>
-                    <li>rattata</li>
-                    <li>raticate</li> -->
-                </div>
+                <div class="autocom-box"></div>
                 <div class="icon"><i class="fas fa-search "></i></div>
             </div>
         </div>
+
+        <!-- pokemon box -->
         <div class="pokemon" data-pokemon-cards-container></div>
     </div>
+
+    <!-- template -->
     <template data-user-template>
         <div class="pokemon-cards">
             <div data-header-wrapper>
                 <header data-header></header>
                 <div>X</div>
             </div>
-            <div data-img>image</div>
+            <div data-img></div>
             <div data-type-wrapper>
                 <div data-type-head>types: </div>
                 <div data-type-body></div>
@@ -62,6 +46,9 @@
             <div data-abilities></div>
         </div>
     </template>
+
+    <script src="/pokemons-name.js"></script>
+    <script src="/recommendation.js"></script>
 
 </body>
 

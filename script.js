@@ -1,40 +1,42 @@
-const pokemonData = document.querySelector("[data-user-template]")
-const pokemonDataContainer = document.querySelector("[data-pokemon-cards-container]")
+const template = document.querySelector("[data-user-template]")
+const templateCards = document.querySelector("[data-pokemon-cards-container]")
 const searchInput = document.querySelector("[data-search]")
 const props = [];
 
 let datas;
-var pokemons = [];
+var pokemonsData = [];
 let wholeData = {};
 
 searchInput.addEventListener("input", (e) => {
     const value = e.target.value;
 
     if (value) {
-        pokemons.forEach(data => {
+        pokemonsData.forEach(data => {
             const isVisible = data.name.includes(value);
             data.element.classList.toggle("hide", isVisible);
         })
     } else {
-        pokemons.forEach(data => {
-            data.element.classList.remove("hide")
+        pokemonsData.forEach(data => {
+            data.element.classList.remove("hide");
         })
     }
 })
 
 
-//reading pokemons link 1~20
+
+//reading each pokemons datas link 1~20 and saving their infos in an array
 function test() {
     for (let index = 1; index <= 20; index++) {
         fetch('https://pokeapi.co/api/v2/pokemon/' + `${index}`)
             .then(results => results.json())
             .then(infos => {
-                const h = infos.height;
-                const w = infos.weight;
-                const n = infos.name;
-                const a = infos.abilities;
-                const t = infos.types[0].type.name;
+                const personlyHeight = infos.height;
+                const personlyWeight = infos.weight;
+                const personlyName = infos.name;
+                const personlyAbility = infos.abilities;
+                const personlyType = infos.types[0].type.name;
                 const image = '<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/' + `${index}` + '.png" />'
+
                 let t1 = '';
                 if (infos.types[1]) {
                     t1 = ', ' + infos.types[1].type.name;
@@ -59,10 +61,10 @@ function test() {
                 // }
                 // console.log(v);
 
-                props[index - 1] = { h, w, n, a, t, t1, v, v1, v2, image };
+                props[index - 1] = { personlyHeight, personlyWeight, personlyName, personlyAbility, personlyType, t1, v, v1, v2, image };
             })
     }
-    console.log(props);
+    // console.log(props);
     return props;
 }
 
@@ -74,24 +76,26 @@ fetch('https://pokeapi.co/api/v2/pokemon/')
 
     .then(res => res.json())
     .then(data => {
-        pokemons = data.results.map(user => {
-            const card = pokemonData.content.cloneNode(true).children[0];
-            const header = card.querySelector("[data-header]")
-            const img = card.querySelector("[data-img]")
-            const type = card.querySelector("[data-type-body]")
-            const height = card.querySelector("[data-height]")
-            const weight = card.querySelector("[data-weight]")
-            const abilities = card.querySelector("[data-abilities]")
+        pokemonsData = data.results.map(user => {
+            // selecting template elements
+            const card = template.content.cloneNode(true).children[0];
+            const header = card.querySelector("[data-header]");
+            const img = card.querySelector("[data-img]");
+            const type = card.querySelector("[data-type-body]");
+            const height = card.querySelector("[data-height]");
+            const weight = card.querySelector("[data-weight]");
+            const abilities = card.querySelector("[data-abilities]");
 
             let c = 0;
+            // assigning the data of each Pokemon to its name selected above.
             props.map(arr => {
 
-                if (arr.n == user.name) {
+                if (arr.personlyName == user.name) {
                     header.textContent = user.name;
-                    height.textContent = 'height: ' + props[c].h;
-                    weight.textContent = 'weight: ' + props[c].w;
-                    type.textContent = props[c].t + ' ' + props[c].t1;
-                    abilities.textContent = 'abilities: ' + props[c].v + ' ' + props[c].v1 + ' ' + props[c].v2
+                    height.textContent = 'height: ' + props[c].personlyHeight;
+                    weight.textContent = 'weight: ' + props[c].personlyWeight;
+                    type.textContent = props[c].personlyType + ' ' + props[c].t1;
+                    abilities.textContent = 'abilities: ' + props[c].v + ' ' + props[c].v1 + ' ' + props[c].v2;
                     img.innerHTML = props[c].image;
                     datas = {
                         name: header.textContent,
@@ -103,11 +107,12 @@ fetch('https://pokeapi.co/api/v2/pokemon/')
                 } else {
                     c++;
                 }
-                pokemonDataContainer.append(card)
-                return wholeData = { ...datas, element: card }
-            })
-            // console.log(pokemons)
-            return pokemons = wholeData;
-        })
+                templateCards.append(card);
+                return wholeData = { ...datas, element: card };
+            });
+            // console.log(pokemonsData);
+            return pokemonsData = wholeData;
+        });
     })
+// });
 

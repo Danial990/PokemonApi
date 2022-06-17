@@ -19,28 +19,23 @@ inputBox.onkeyup = (e) => {
             return data = '<li>' + data + '</li>';
         });
 
-        searchWrapper.classList.add("active"); //show auto complete Box
         showSuggestion(emptyArray);
+
         let allList = suggBox.querySelectorAll("li");
         for (let i = 0; i < allList.length; i++) {
             // adding onclick attribute in al li tag
             allList[i].setAttribute("onclick", "select(this)");
 
+            searchWrapper.classList.add("active"); //show auto complete Box
         }
     } else {
         searchWrapper.classList.remove("active"); //hide auto complete Box
     }
 }
 
+// passing the user selected list item data in textfield
 function select(element) {
-    let selectUserData = element.textContent;
-    inputBox.value = selectUserData // passing the user selected list item data in textfield
-
-    // pokemons.map(() => {
-    //     if (pokemons.name == selectUserData) {
-    //         pokemons.element.classList.toggle("hide");
-    //     }
-    // })
+    inputBox.value = element.textContent;
 }
 
 function showSuggestion(list) {
