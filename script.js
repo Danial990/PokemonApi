@@ -3,6 +3,7 @@ const domCards = document.querySelector("[data-pokemon-cards-container]")
 const inputBox = document.querySelector("[data-search]")
 const searchWrapper = document.querySelector(".search-input")
 const suggBox = document.querySelector(".autocom-box")
+const pokeNameSugg= document.querySelector(".suggestions")
 
 let currentPokemon = {};
 let pokeItems = [];
@@ -33,13 +34,14 @@ inputBox.addEventListener("input", (e) => {
 
                 showSuggestion(liList);
 
-
-                let allList = suggBox.querySelectorAll("li");
                 searchWrapper.classList.add("active"); //show auto complete Box
 
+                let allList = suggBox.querySelectorAll("li");
                 allList.forEach(el => {
                     el.addEventListener("click", select)
                 })
+
+                pokeNameSugg.innerHTML
             })
 
             .catch(err => {
