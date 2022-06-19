@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: 'poppins', sans-serif;
+    /* color: rgb(56, 66, 4); */
 }
 
 .container {
@@ -10,7 +11,7 @@
     flex-direction: row;
     background: #644bff;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .search-wrapper {
@@ -65,7 +66,7 @@
     list-style: none;
     padding: 8px 12px;
     width: 100%;
-    cursor: default;
+    cursor: pointer;
     border-radius: 3px;
     display: none;
 }
@@ -91,6 +92,11 @@
     left: 10px;
     font-size: 1.5rem;
     color: #644bff;
+}
+
+.pokemon {
+    color: #fff;
+
 }
 
 .pokemon-cards {
@@ -158,6 +164,6 @@
     margin-top: 40px;
 }
 
-.hide {
+.show {
     display: block;
 }
