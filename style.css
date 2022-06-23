@@ -94,6 +94,33 @@
     color: #644bff;
 }
 
+.search-wrapper button {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: rgb(12, 138, 248);
+}
+
+.search-wrapper .hint-wrapper {
+    width: 400px;
+    height: 300px;
+    /* position: absolute; */
+}
+
+.search-wrapper .hint-wrapper .help, .hint {
+    font-size: 1rem;
+    color: #fff;
+    margin: 15px 15px;
+    /* width: 200px; */
+    /* display: none; */
+
+}
+
+
 .pokemon {
     color: #fff;
 
@@ -166,4 +193,8 @@
 
 .show {
     display: block;
+}
+
+.active {
+    color: red;
 }

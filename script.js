@@ -3,13 +3,41 @@ const domCards = document.querySelector("[data-pokemon-cards-container]")
 const inputBox = document.querySelector("[data-search]")
 const searchWrapper = document.querySelector(".search-input")
 const suggBox = document.querySelector(".autocom-box")
-const pokeNameSugg= document.querySelector(".suggestions")
+const pokeNameSugg = document.querySelector(".suggestions")
+const hintWrapper = document.querySelector(".hint-wrapper")
 
 let currentPokemon = {};
 let pokeItems = [];
 let searchResult = [];
 let liList = [];
 
+
+//suggestion button
+
+
+// pokeNameSugg.addEventListener("click", () => {
+//     fetch('https://pokeapi.co/api/v2/pokemon/')
+//         .then(res => res.json())
+//         .then(data => {
+//             pokeItems = data.results;
+
+//             const pokeNames = pokeItems.map(data => {
+//                 return data.name;
+//             })
+
+//             cleanUpHint();
+//             const paragraph = document.createElement("p");
+//             paragraph.innerHTML = pokeNames;
+//             paragraph.classList.add("hint");
+//             hintWrapper.append(paragraph);
+
+//             const hintText = document.querySelector(".hint")
+//             hintText.style.width = "200px";
+//             console.log(hintWrapper)
+//             hintWrapper.classList.toggle("active")
+//             hintText.classList.add("active")
+//         })
+// })
 
 inputBox.addEventListener("input", (e) => {
     const search = e.target.value;
@@ -29,8 +57,9 @@ inputBox.addEventListener("input", (e) => {
                 liList = pokeNames.map(list => {
                     return '<li>' + list + '</li>';
                 });
-
+                // inputBox.textContent = liList;
                 suggBox.innerHTML = liList;
+
 
                 showSuggestion(liList);
 
@@ -41,7 +70,6 @@ inputBox.addEventListener("input", (e) => {
                     el.addEventListener("click", select)
                 })
 
-                pokeNameSugg.innerHTML
             })
 
             .catch(err => {
@@ -142,3 +170,13 @@ function closeButton() {
     const xButton = document.getElementById("close");
     xButton.addEventListener("click", cleanUpCard)
 }
+
+function cleanUpHint() {
+    const allhints = document.querySelector(".hint");
+    if (allhints != undefined) {
+        if (allhints.length != 0) {
+            allhints.remove()
+        }
+    }
+}
+
