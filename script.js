@@ -15,29 +15,26 @@ let liList = [];
 //suggestion button
 
 
-// pokeNameSugg.addEventListener("click", () => {
-//     fetch('https://pokeapi.co/api/v2/pokemon/')
-//         .then(res => res.json())
-//         .then(data => {
-//             pokeItems = data.results;
+pokeNameSugg.addEventListener("click", () => {
+    fetch('https://pokeapi.co/api/v2/pokemon/')
+        .then(res => res.json())
+        .then(data => {
+            pokeItems = data.results;
 
-//             const pokeNames = pokeItems.map(data => {
-//                 return data.name;
-//             })
+            const pokeNames = pokeItems.map(data => {
+                return data.name;
+            })
 
-//             cleanUpHint();
-//             const paragraph = document.createElement("p");
-//             paragraph.innerHTML = pokeNames;
-//             paragraph.classList.add("hint");
-//             hintWrapper.append(paragraph);
-
-//             const hintText = document.querySelector(".hint")
-//             hintText.style.width = "200px";
-//             console.log(hintWrapper)
-//             hintWrapper.classList.toggle("active")
-//             hintText.classList.add("active")
-//         })
-// })
+            const hintText = document.querySelector(".hint")
+            addActiveClass();
+            if (!hintText) {
+                const paragraph = document.createElement("p");
+                paragraph.innerHTML = " <div style=color:aqua> You can search between following names: </div> </br>" +"</br>"+ pokeNames;
+                paragraph.classList.add("hint");
+                hintWrapper.append(paragraph);
+            }
+        })
+})
 
 inputBox.addEventListener("input", (e) => {
     const search = e.target.value;
@@ -171,12 +168,9 @@ function closeButton() {
     xButton.addEventListener("click", cleanUpCard)
 }
 
-function cleanUpHint() {
-    const allhints = document.querySelector(".hint");
-    if (allhints != undefined) {
-        if (allhints.length != 0) {
-            allhints.remove()
-        }
+function addActiveClass() {
+    const hintText = document.querySelector(".hint")
+    if (hintText) {
+        hintText.classList.toggle("activee")
     }
 }
-

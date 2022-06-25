@@ -108,16 +108,18 @@
 .search-wrapper .hint-wrapper {
     width: 400px;
     height: 300px;
-    /* position: absolute; */
+
 }
 
-.search-wrapper .hint-wrapper .help, .hint {
+.search-wrapper .hint-wrapper .help,
+.hint {
     font-size: 1rem;
     color: #fff;
     margin: 15px 15px;
-    /* width: 200px; */
-    /* display: none; */
-
+    max-width: 100%;
+    width: 250px;
+    overflow-wrap: break-word;
+    visibility: visible;
 }
 
 
@@ -133,6 +135,8 @@
     height: 350px;
     padding: 30px;
     display: none;
+    background-color: aqua;
+    /* color: #767604; */
 }
 
 .pokemon-cards header {
@@ -195,6 +199,6 @@
     display: block;
 }
 
-.active {
-    color: red;
+.activee {
+    visibility: hidden;
 }
